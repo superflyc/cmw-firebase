@@ -1,1 +1,5 @@
-adding config files is important :)
+<p *ngFor="let car of cars | async">
+    {{car.make}}<br/>
+    {{car.model}}<br/>
+    {{car.year}}<br/>
+</p>

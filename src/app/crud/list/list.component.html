@@ -1,3 +1,3 @@
-<p>
-  list works!
+<p *ngFor = "let doc of collection | async">
+  {{doc.make}} {{doc.model}}
 </p>

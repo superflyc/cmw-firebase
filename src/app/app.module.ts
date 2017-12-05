@@ -8,6 +8,8 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {ListComponent} from './crud/list/list.component';
 import {DetailComponent} from './crud/detail/detail.component';
 import {CrudService} from './crud/crud.service';
+import {MatButtonModule, MatIconModule, MatMenuModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,13 @@ import {CrudService} from './crud/crud.service';
           databaseURL: 'https://cmw-firebase.firebaseio.com',
           projectId: 'cmw-firebase',
       }),
-      AngularFirestoreModule.enablePersistence()
+      AngularFirestoreModule.enablePersistence(),
+      BrowserAnimationsModule,
+      MatSidenavModule,
+      MatToolbarModule,
+      MatIconModule,
+      MatButtonModule,
+      MatMenuModule
   ],
   providers: [CrudService],
   bootstrap: [AppComponent]

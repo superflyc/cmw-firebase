@@ -22,7 +22,7 @@ export class CrudService {
         // default to sort by dateCreated
         // docs without dateCreated won't be returned
         if (!queryFn) {
-            queryFn = ref => ref.orderBy('dateCreated', 'desc');
+            queryFn = ref => ref.orderBy('_dateCreated', 'desc');
         }
         return typeof collRef === 'string' ? this.afs.collection<T>(collRef, queryFn) : collRef;
 

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CrudService} from '../crud.service';
 import {Observable} from 'rxjs/Observable';
 
@@ -10,6 +10,7 @@ import {Observable} from 'rxjs/Observable';
 export class ListComponent implements OnInit {
 
     collection: Observable<any[]>;
+    @Input() docModel: any;
 
     constructor(private crudService: CrudService) {
     }

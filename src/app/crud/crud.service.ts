@@ -33,7 +33,6 @@ export class CrudService {
     }
 
     getColl$<T>(collRef: CollectionPredicate<T>, queryFn?): Observable<any[]> {
-
         return this.getColl(collRef, queryFn).snapshotChanges()
             .map(docs => {
                 return docs.map(doc => {

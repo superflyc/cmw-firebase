@@ -31,7 +31,12 @@ export class AppComponent {
     selectedUser = this.users[0];
 
     private openAdminDialog() {
-        this.dialog.open(DialogComponent);
+        this.dialog.open(DialogComponent).afterClosed()
+            .filter(result => !!result)
+            .subscribe(user => {
+                this.users.push(user);
+                this.selectedUser = user;
+            });
     }
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dialog: MatDialog) {

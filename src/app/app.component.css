@@ -15,7 +15,7 @@ mat-sidenav {
     margin: 12px;
 }
 
-/deep/ .mat-list-item-content {
+/deep/ .mat-list-item-content, .mat-list-item {
     height: auto !important;
 }
 

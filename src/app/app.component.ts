@@ -30,7 +30,7 @@ export class AppComponent {
 
     selectedUser = this.users[0];
 
-    private openAdminDialog() {
+    openAdminDialog() {
         this.dialog.open(DialogComponent).afterClosed()
             .filter(result => !!result)
             .subscribe(user => {

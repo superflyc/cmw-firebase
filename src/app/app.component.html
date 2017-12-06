@@ -1,2 +1,49 @@
-<app-top-nav></app-top-nav>
-<app-main-content></app-main-content>
+<div fxLayout="column" fxFlex>
+
+    <mat-toolbar color="primary">
+
+            <span>Angular Material</span>
+
+        <span fxFlex></span>
+
+        <button mat-fab (click)="openAdminDialog()" class = "fab-bottom-right">
+            <mat-icon>add</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-sidenav-container fxFlex>
+        <mat-sidenav mode="side" opened = "true">
+
+            <mat-tab-group>
+                <mat-tab label="Users">
+                    <mat-nav-list>
+                        <mat-list-item *ngFor="let user of users" (click)="selectedUser = user">
+                            <mat-icon matListAvatar svgIcon="avatars:{{user.avatar}}" class="avatar"></mat-icon>
+                            <span>{{user.name}}</span>
+                        </mat-list-item>
+                    </mat-nav-list>
+                </mat-tab>
+                <mat-tab label="Settings">
+                    <span>Settings</span>
+                </mat-tab>
+            </mat-tab-group>
+
+        </mat-sidenav>
+        <div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
+
+            <mat-card fxFlex="80">
+                <mat-icon svgIcon="avatars:{{selectedUser.avatar}}" class="avatar"></mat-icon>
+                <h2>{{selectedUser.name}}</h2>
+                <p>{{selectedUser.details}}</p>
+            </mat-card>
+
+            <mat-card fxFlex fxLayout="column" fxLayoutGap="14px">
+                <mat-slide-toggle [(ngModel)]="selectedUser.isAdmin">Is Admin?</mat-slide-toggle>
+                <mat-slide-toggle [(ngModel)]="selectedUser.isCool">Is Cool?</mat-slide-toggle>
+            </mat-card>
+
+        </div>
+
+    </mat-sidenav-container>
+
+</div>

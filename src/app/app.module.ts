@@ -8,14 +8,25 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {ListComponent} from './crud/list/list.component';
 import {DetailComponent} from './crud/detail/detail.component';
 import {CrudService} from './crud/crud.service';
-import {MatButtonModule, MatIconModule, MatMenuModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatToolbarModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TopNavComponent} from './top-nav/top-nav.component';
+import {MainContentComponent} from './main-content/main-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    DetailComponent
+    DetailComponent,
+    TopNavComponent,
+    MainContentComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +42,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
       MatToolbarModule,
       MatIconModule,
       MatButtonModule,
-      MatMenuModule
+      MatMenuModule,
+      MatCardModule
   ],
   providers: [CrudService],
   bootstrap: [AppComponent]

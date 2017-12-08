@@ -23,14 +23,17 @@ import {FormsModule} from '@angular/forms';
 
 // touch friendly
 import 'hammerjs';
-import { DialogComponent } from './dialog/dialog.component';
+import {DialogComponent} from './dialog/dialog.component';
+import {CollListComponent} from './coll-list/coll-list.component';
+import {DataService} from './data/data.service';
 
 @NgModule({
     declarations: [
         AppComponent,
         ListComponent,
         DetailComponent,
-        DialogComponent
+        DialogComponent,
+        CollListComponent
     ],
     imports: [
         BrowserModule,
@@ -63,7 +66,10 @@ import { DialogComponent } from './dialog/dialog.component';
         // Flex-layout
         FlexLayoutModule
     ],
-    providers: [CrudService],
+    providers: [
+        CrudService,
+        DataService
+    ],
     entryComponents: [DialogComponent],
     bootstrap: [AppComponent]
 })

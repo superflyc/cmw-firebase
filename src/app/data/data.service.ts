@@ -1,27 +1,35 @@
 import {Injectable} from '@angular/core';
-import {Car} from '../models/car';
-import {Taco} from '../models/taco';
+import {Gear} from '../models/gear';
+import {Event} from '../models/event';
+
+export interface CollMeta {
+    colPath: string;
+    colName: string;
+    docName: string;
+    docClass: any;
+}
 
 @Injectable()
 export class DataService {
 
     // models and metadata
-    static metaData = {
-        'cars': {
-            colPath: 'cars',
-            collName: 'Cars',
-            docName: 'Car',
-            docClass: Car
+    collections: CollMeta[] = [
+        {
+            colPath: 'gear',
+            colName: 'Gear',
+            docName: 'Gear',
+            docClass: Gear
         },
-        'tacos': {
-            colPath: 'tacos',
-            colName: 'Tacos',
-            docName: 'Taco',
-            docClass: Taco
+        {
+            colPath: 'events',
+            colName: 'Events',
+            docName: 'Event',
+            docClass: Event
         }
-    };
+    ];
 
     constructor() {
     }
-
 }
+
+

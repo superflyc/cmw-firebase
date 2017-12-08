@@ -1,0 +1,34 @@
+<mat-sidenav-container fxFlex>
+  <mat-sidenav mode="side" opened = "true">
+
+    <mat-tab-group>
+      <mat-tab label="Logistics" >
+        <mat-nav-list>
+          <mat-list-item *ngFor="let collection of collections" (click)="selectedCollection = collection">
+            <span>{{collection.colName}}</span>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-tab>
+      <mat-tab label="Settings">
+        <span>Settings</span>
+      </mat-tab>
+    </mat-tab-group>
+
+  </mat-sidenav>
+  <div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
+
+    <mat-card fxFlex="80">
+      <h2>{{selectedCollection.ColName}}</h2>
+    </mat-card>
+
+    <mat-card fxFlex fxLayout="column" fxLayoutGap="14px">
+      filler
+    </mat-card>
+
+  </div>
+
+  <button mat-fab (click)="openAdminDialog(collection)" class="fab-bottom-right">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</mat-sidenav-container>

@@ -1,12 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
+import {CollMeta} from '../data/data.service';
 
 @Component({
     templateUrl: 'dialog.component.html'
 })
 export class DialogComponent {
-    avatars = new Array(16).fill(0).map((_, i) => `svg-${i+1}`);
-    selectedAvatar = this.avatars[0];
+
+    @Input() collection: CollMeta;
+
 
     constructor(public dialogRef: MatDialogRef<DialogComponent>) {}
 }

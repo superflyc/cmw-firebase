@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Gear} from '../models/gear';
 import {Event} from '../models/event';
 
-export interface CollMeta {
+export interface ColMeta {
     colPath: string;
     colName: string;
     docName: string;
@@ -13,7 +13,7 @@ export interface CollMeta {
 export class DataService {
 
     // models and metadata
-    collections: CollMeta[] = [
+    collections: ColMeta[] = [
         {
             colPath: 'gear',
             colName: 'Gear',

@@ -24,6 +24,7 @@
     "rules": "storage.rules"
   },
   "functions": {
-    "predeploy": "npm --prefix functions run build"
+    "predeploy": "npm --prefix functions run build",
+    "source": "functions"
   }
 }

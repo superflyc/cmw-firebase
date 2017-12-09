@@ -19,10 +19,11 @@ import {ListComponent} from './crud/list/list.component';
 import {DetailComponent} from './crud/detail/detail.component';
 import {CrudService} from './crud/crud.service';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 // touch friendly
 import 'hammerjs';
+
 import {DialogComponent} from './dialog/dialog.component';
 import {CollListComponent} from './coll-list/coll-list.component';
 import {DataService} from './data/data.service';
@@ -46,7 +47,7 @@ import {DataService} from './data/data.service';
         AngularFirestoreModule.enablePersistence(),
         BrowserAnimationsModule,
         HttpClientModule,
-        FormsModule,
+        ReactiveFormsModule,
 
         // Material
         MatButtonModule,

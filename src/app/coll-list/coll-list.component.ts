@@ -17,8 +17,9 @@ export class CollListComponent implements OnInit {
         this.collections = this.dataService.collections;
     }
 
-    openAdminDialog(metaData: ColMeta) {
-        this.dialog.open(DialogComponent).afterClosed()
+    openAdminDialog() {
+        this.dialog.open(DialogComponent,
+            {data: this.selectedCollection}).afterClosed()
             .filter(result => !!result)
             .subscribe(user => {
                 //  this.users.push(user);

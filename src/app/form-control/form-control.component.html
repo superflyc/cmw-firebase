@@ -1,0 +1,20 @@
+<ng-container [ngSwitch]="fieldData.type">
+
+    <mat-form-field *ngSwitchCase="'select'">
+        <mat-select placeholder = "Please select..." [formControl] = "control">
+            <mat-option *ngFor = "let option of fieldData.values" [value] = "option">
+                {{option}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="control.hasError('required')">
+            {{fieldData.label}} is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngSwitchDefault>
+        <input matInput [placeholder]="fieldData.label" [formControl]="control" [value]="fieldValue">
+        <mat-error *ngIf="control.hasError('required')">
+            {{fieldData.label}} is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+</ng-container>

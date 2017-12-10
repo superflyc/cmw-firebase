@@ -1,14 +1,16 @@
-<h3>Add {{colInfo.docName}}</h3>
-<form (ngSubmit)="dialogRef.close(dataForm.value)" [formGroup]="dataForm">
+<h3>Add {{clazz.colData.docName}}</h3>
+<form (ngSubmit)="submitForm()" [formGroup]="dataForm">
   <div fxLayout="column" fxLayoutGap="8px">
-    <div fxLayout="row" fxLayoutAlign="start center">
-test
+    <div *ngFor = "let field of fieldData" fxLayout="row" fxLayoutAlign="start center">
+      <app-form-control
+              [fieldData]="field"
+              [fieldValue] = "isNew ? field.default : model[field.field]"
+              [control]="dataForm.controls[field.field]"
+      ></app-form-control>
     </div>
-test
-
   </div>
   <mat-dialog-actions align="end">
     <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>
-    <button mat-button color="accent">Save User</button>
+    <button mat-button color="accent">Save {{clazz.colData.docName}}</button>
   </mat-dialog-actions>
 </form>

@@ -27,6 +27,7 @@ import 'hammerjs';
 import {DialogComponent} from './dialog/dialog.component';
 import {CollListComponent} from './coll-list/coll-list.component';
 import {DataService} from './data/data.service';
+import { FormControlComponent } from './form-control/form-control.component';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import {DataService} from './data/data.service';
         ListComponent,
         DetailComponent,
         DialogComponent,
-        CollListComponent
+        CollListComponent,
+        FormControlComponent
     ],
     imports: [
         BrowserModule,

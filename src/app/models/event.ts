@@ -1,17 +1,25 @@
-import {Base, MetaData} from './base';
+import {Base, FieldData, ColData} from './base';
 
 export class Event extends Base {
 
-    static metaData = {
-    name: <MetaData> {
-        type: 'string',
-        label: 'Name'
-    },
-        eventDate: <MetaData> {
+    static colData: ColData = {
+        path: 'events',
+        colName: 'Events',
+        docName: 'Event'
+    }
+
+    static fieldData: FieldData[] = [
+        {
+            field: 'name',
+            type: 'string',
+            label: 'Name'
+        },
+        {
+            field: 'eventData',
             type: 'date',
             label: 'Event Date'
         }
-    };
+    ];
 
     eventDate: Date;
     name: string;

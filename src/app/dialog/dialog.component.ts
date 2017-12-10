@@ -1,7 +1,7 @@
 import {Component, Inject, Input} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
 import {MAT_DIALOG_DATA} from '@angular/material';
-import {ColMeta} from '../data/data.service';
+import {Base, FieldData} from '../models/base';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -9,32 +9,43 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class DialogComponent {
 
-    colInfo: ColMeta;
+    clazz: typeof Base;
+    model: Base;
+    fieldData: FieldData[];
     dataForm: FormGroup;
+    isNew: boolean;
 
     createForm() {
-        const metaData = this.colInfo.docClass.metaData;
         const group: any = {};
 
-        Object.keys(metaData).forEach(
-            key => {
-                const field = metaData[key];
+        this.fieldData.forEach(
+            field => {
                 const optionsObj = {
                     validators: field.required ? Validators.required : null
                 };
 
-                group[key] = new FormControl(field.default || '', optionsObj);
+                group[field.field] = new FormControl(field.default || '', optionsObj);
             }
         );
 
-        this.dataForm = new FormGroup(group);
+        this.dataForm = new FormGroup(group, {updateOn: 'blur'});
     }
 
+submitForm() {
+
+    if (this.dataForm.valid) {
+        this.dialogRef.close(this.dataForm.value);
+    }
+}
+
     constructor(public dialogRef: MatDialogRef<DialogComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: ColMeta,
+                @Inject(MAT_DIALOG_DATA) public data,
                 fb: FormBuilder) {
 
-        this.colInfo = data;
+        this.clazz = data.clazz;
+        this.model = data.instance;
+        this.fieldData = this.clazz.fieldData;
+        this.isNew = data.isNew ? true : false;
         this.createForm();
 
     }

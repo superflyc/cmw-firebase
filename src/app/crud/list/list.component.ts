@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.collection = this.crudService.getColl$('cars');
+        this.collection = this.crudService.getCol$('cars');
     }
 
 }

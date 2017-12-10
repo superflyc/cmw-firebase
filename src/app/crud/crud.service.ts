@@ -18,13 +18,13 @@ export class CrudService {
         return firebase.database.ServerValue.TIMESTAMP;
     }
 
-    getColl<T>(collRef: CollectionPredicate<T>, queryFn?): AngularFirestoreCollection<T> {
+    getCol<T>(colRef: CollectionPredicate<T>, queryFn?): AngularFirestoreCollection<T> {
         // default to sort by dateCreated
         // docs without dateCreated won't be returned
         if (!queryFn) {
             queryFn = ref => ref.orderBy('_dateCreated', 'desc');
         }
-        return typeof collRef === 'string' ? this.afs.collection<T>(collRef, queryFn) : collRef;
+        return typeof colRef === 'string' ? this.afs.collection<T>(colRef, queryFn) : colRef;
 
     }
 
@@ -32,8 +32,8 @@ export class CrudService {
         return typeof docRef === 'string' ? this.afs.doc<T>(docRef) : docRef;
     }
 
-    getColl$<T>(collRef: CollectionPredicate<T>, queryFn?): Observable<any[]> {
-        return this.getColl(collRef, queryFn).snapshotChanges()
+    getCol$<T>(colRef: CollectionPredicate<T>, queryFn?): Observable<any[]> {
+        return this.getCol(colRef, queryFn).snapshotChanges()
             .map(docs => {
                 return docs.map(doc => {
                     const id = doc.payload.doc.id;

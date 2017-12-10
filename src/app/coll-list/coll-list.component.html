@@ -5,7 +5,7 @@
       <mat-tab label="Logistics" >
         <mat-nav-list>
           <mat-list-item *ngFor="let collection of collections" (click)="selectedCollection = collection">
-            <span>{{collection.colName}}</span>
+            <span>{{collection.colData.colName}}</span>
           </mat-list-item>
         </mat-nav-list>
       </mat-tab>
@@ -17,17 +17,14 @@
   </mat-sidenav>
   <div class="content" fxLayout="row" fxLayout.sm="column" fxLayoutGap="16px">
 
-    <mat-card fxFlex="80">
-      <h2>{{selectedCollection.colName}}</h2>
+    <mat-card fxFlex>
+      <h2>{{selectedCollection.colData.colName}}</h2>
     </mat-card>
 
-    <mat-card fxFlex fxLayout="column" fxLayoutGap="14px">
-      filler
-    </mat-card>
 
   </div>
 
-  <button mat-fab (click)="openAdminDialog()" class="fab-bottom-right">
+  <button mat-fab (click)="createNew()" class="fab-bottom-right">
     <mat-icon>add</mat-icon>
   </button>
 

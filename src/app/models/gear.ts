@@ -1,33 +1,45 @@
-import {Base, MetaData} from './base';
+import {Base, ColData, FieldData} from './base';
 
 export class Gear extends Base {
 
-    static metaData = {
-        manufacturer: {
+    static colData: ColData = {
+        path: 'gear',
+        colName: 'Gear',
+        docName: 'Gear'
+    };
+
+    static fieldData: FieldData[] = [
+        {
+            field: 'manufacturer',
             type: 'string',
             label: 'Manufacturer',
             required: true,
             default: 'Shure'
         },
-        model: <MetaData> {
+        {
+            field: 'model',
             type: 'string',
             label: 'Model',
             required: true
         },
-        category: <MetaData> {
-            type: 'string',
+        {
+            field: 'category',
+            type: 'select',
             label: 'Category',
+            required: true,
             values: ['Microphone', 'Amp', 'Keys', 'Drums', 'Bass', 'Guitar']
         },
-        cost: <MetaData> {
+        {
+            field: 'cost',
             type: 'currency',
             label: 'Currency'
         },
-        quantity: <MetaData> {
+        {
+            field: 'quantity',
             type: 'number',
             label: 'Quantity'
         }
-    };
+    ];
 
     manufacturer: string;
     model: string;

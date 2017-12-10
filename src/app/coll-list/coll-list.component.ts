@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {DialogComponent} from '../dialog/dialog.component';
 import {MatDialog} from '@angular/material';
-import {ColMeta, DataService} from '../data/data.service';
+import {DataService} from '../data/data.service';
+import {Base} from '../models/base';
 
 @Component({
     selector: 'app-coll-list',
@@ -10,16 +11,22 @@ import {ColMeta, DataService} from '../data/data.service';
 })
 export class CollListComponent implements OnInit {
 
-    collections: ColMeta[];
-    selectedCollection: ColMeta;
+    collections: typeof Base[];
+    selectedCollection: typeof Base;
 
-    getColls(): void {
+    getCols(): void {
         this.collections = this.dataService.collections;
     }
 
-    openAdminDialog() {
+    createNew() {
         this.dialog.open(DialogComponent,
-            {data: this.selectedCollection}).afterClosed()
+            {
+                data: {
+                    clazz: this.selectedCollection,
+                    instance: new this.selectedCollection(),
+                    isNew: true
+                }
+            }).afterClosed()
             .filter(result => !!result)
             .subscribe(user => {
                 //  this.users.push(user);
@@ -29,7 +36,7 @@ export class CollListComponent implements OnInit {
 
     constructor(private dialog: MatDialog,
                 private dataService: DataService) {
-        this.getColls();
+        this.getCols();
         this.selectedCollection = this.collections.length ? this.collections[0] : null;
     }
 
